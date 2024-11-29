@@ -195,79 +195,87 @@ public class Controller {
 
 
 
+
+
+
+
     
-    public static KTP createKTP(
-        String nik, 
-        String nama, 
-        String tempatLahir, 
-        String tanggalLahir, 
-        JenisKelamin jenisKelamin, 
-        String golDarah, 
-        String alamat, 
-        String rt, 
-        String rw, 
-        String kelDesa, 
-        String kecamatan,
-        JenisAgama agama, 
-        StatusPerkawinan statusPerkawinan, 
-        String pekerjaan, 
-        String kewarganegaraan, 
-        String wargaNegaraAsal, 
-        File photoFile, 
-        File signatureFile, 
-        String berlakuHingga, 
-        String kotaPembuatan, 
-        String tanggalPembuatan, 
-        int actionValue) {
+
+
+
+    
+    // public static KTP createKTP(
+    //     String nik, 
+    //     String nama, 
+    //     String tempatLahir, 
+    //     String tanggalLahir, 
+    //     JenisKelamin jenisKelamin, 
+    //     String golDarah, 
+    //     String alamat, 
+    //     String rt, 
+    //     String rw, 
+    //     String kelDesa, 
+    //     String kecamatan,
+    //     JenisAgama agama, 
+    //     StatusPerkawinan statusPerkawinan, 
+    //     String pekerjaan, 
+    //     String kewarganegaraan, 
+    //     String wargaNegaraAsal, 
+    //     File photoFile, 
+    //     File signatureFile, 
+    //     String berlakuHingga, 
+    //     String kotaPembuatan, 
+    //     String tanggalPembuatan, 
+    //     int actionValue) {
         
 
 
-        KTP ktp = new KTP(nik, nama, tempatLahir, tanggalLahir, jenisKelamin, golDarah, alamat, rt, rw, kelDesa, kecamatan,
-                                agama, statusPerkawinan, pekerjaan, kewarganegaraan, wargaNegaraAsal, photoFile,
-                                signatureFile, berlakuHingga, kotaPembuatan, tanggalPembuatan);
+    //     KTP ktp = new KTP(nik, nama, tempatLahir, tanggalLahir, jenisKelamin, golDarah, alamat, rt, rw, kelDesa, kecamatan,
+    //                             agama, statusPerkawinan, pekerjaan, kewarganegaraan, wargaNegaraAsal, photoFile,
+    //                             signatureFile, berlakuHingga, kotaPembuatan, tanggalPembuatan);
         
-        if (actionValue == 1) {
+    //     if (actionValue == 1) {
             
-        Toolkit toolkit = Toolkit.getDefaultToolkit(); // INIT TOOLKIT
-        Dimension screenSize = toolkit.getScreenSize(); // GET MY SCREEN SIZE
+    //     Toolkit toolkit = Toolkit.getDefaultToolkit(); // INIT TOOLKIT
+    //     Dimension screenSize = toolkit.getScreenSize(); // GET MY SCREEN SIZE
 
-        int screenWidth = screenSize.width; // GET PIXELS FOR WIDTH
-        int screenHeight = screenSize.height; // GET PIXELS FOR HEIGHT
+    //     int screenWidth = screenSize.width; // GET PIXELS FOR WIDTH
+    //     int screenHeight = screenSize.height; // GET PIXELS FOR HEIGHT
 
-        final int FRAME_WIDTH = 1200; // SET WIDTH
-        final int FRAME_HEIGHT = 800; // SET WEIGHT
+    //     final int FRAME_WIDTH = 1200; // SET WIDTH
+    //     final int FRAME_HEIGHT = 800; // SET WEIGHT
 
-        int start_x = screenWidth / 2 - (FRAME_WIDTH / 2); // SET START LOCATION FOR X
-        int start_y = screenHeight / 2 - (FRAME_HEIGHT / 2); // SET START LOCATION FOR Y
+    //     int start_x = screenWidth / 2 - (FRAME_WIDTH / 2); // SET START LOCATION FOR X
+    //     int start_y = screenHeight / 2 - (FRAME_HEIGHT / 2); // SET START LOCATION FOR Y
 
-        JFrame displayKTP = new JFrame("Form Input Data Penduduk"); // CREATE FRAME AND SET TITLE
+    //     JFrame displayKTP = new JFrame("Form Input Data Penduduk"); // CREATE FRAME AND SET TITLE
 
-        displayKTP.setBounds(start_x, start_y, FRAME_WIDTH, FRAME_HEIGHT); // SET FRAME BOUND
+    //     displayKTP.setBounds(start_x, start_y, FRAME_WIDTH, FRAME_HEIGHT); // SET FRAME BOUND
 
-        displayKTP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        displayKTP.setLayout(null);
-
-        
-
-        displayKTP.setVisible(true);
-
-
-
-
-
+    //     displayKTP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //     displayKTP.setLayout(null);
 
         
 
-        }
-        else {
+    //     displayKTP.setVisible(true);
 
-          System.out.println("Update");
 
-        }
 
-        return ktp;
 
-    }
+
+
+        
+
+    //     }
+    //     else {
+
+    //       System.out.println("Update");
+
+    //     }
+
+    //     return ktp;
+
+    // }
 
 }
 

@@ -2,6 +2,7 @@ package View;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -390,8 +392,8 @@ public class FormInputData {
                         alamatField, RTField, RWField, kelDesaField, kecamatanField, agamaCB, statusNikahCB,
                         karyawanSwastaCheck, pnsCheck, wiraswastaCheck, akademisiCheck, pengangguranCheck,
                         groupKewarganegaraan, countryLabelField, photoFile, signatureFile, berlakuField,
-                        kotaPembuatanKTPField, datePickerKTP)) {
-                    System.out.println("a");
+                        kotaPembuatanKTPField, datePickerKTP))
+                {
 
                     String nik = nikField.getText();
                     String nama = namaField.getText();
@@ -417,136 +419,149 @@ public class FormInputData {
                     java.util.Date tanggal2 = (java.util.Date) datePickerKTP.getModel().getValue();
 
                     
-
                     System.out.println("NIK: " + nik);
-System.out.println("Nama: " + nama);
-System.out.println("Tempat Lahir: " + tempatLahir);
-System.out.println("Tanggal Lahir: " + tanggal1);
-System.out.println("Jenis Kelamin: " + jenisKelamin);
-System.out.println("Golongan Darah: " + golDarah);
-System.out.println("Alamat: " + alamat);
-System.out.println("RT: " + rt);
-System.out.println("RW: " + rw);
-System.out.println("Kelurahan/Desa: " + kelDesa);
-System.out.println("Kecamatan: " + kecamatan);
-System.out.println("Agama: " + agama);
-System.out.println("Status Perkawinan: " + statusPerkawinan);
-System.out.println("Pekerjaan: " + pekerjaan);
-System.out.println("Warga Negara Asal: " + wargaNegaraAsal);
-System.out.println("Kewarganegaraan: " + kewarganegaraan);
-System.out.println("Berlaku Hingga: " + berlakuHingga);
-System.out.println("Kota Pembuatan: " + kotaPembuatan);
-System.out.println("Tanggal Pembuatan KTP: " + tanggal2);
+                    System.out.println("Nama: " + nama);
+                    System.out.println("Tempat Lahir: " + tempatLahir);
+                    System.out.println("Tanggal Lahir: " + tanggal1);
+                    System.out.println("Jenis Kelamin: " + jenisKelamin);
+                    System.out.println("Golongan Darah: " + golDarah);
+                    System.out.println("Alamat: " + alamat);
+                    System.out.println("RT: " + rt);
+                    System.out.println("RW: " + rw);
+                    System.out.println("Kelurahan/Desa: " + kelDesa);
+                    System.out.println("Kecamatan: " + kecamatan);
+                    System.out.println("Agama: " + agama);
+                    System.out.println("Status Perkawinan: " + statusPerkawinan);
+                    System.out.println("Pekerjaan: " + pekerjaan);
+                    System.out.println("Warga Negara Asal: " + wargaNegaraAsal);
+                    System.out.println("Kewarganegaraan: " + kewarganegaraan);
+                    System.out.println("Berlaku Hingga: " + berlakuHingga);
+                    System.out.println("Kota Pembuatan: " + kotaPembuatan);
+                    System.out.println("Tanggal Pembuatan KTP: " + tanggal2);
 
-                        
+                    Toolkit toolkit = Toolkit.getDefaultToolkit(); // INIT TOOLKIT
+                    Dimension screenSize = toolkit.getScreenSize(); // GET MY SCREEN SIZE
 
-                                 
-        Toolkit toolkit = Toolkit.getDefaultToolkit(); // INIT TOOLKIT
-        Dimension screenSize = toolkit.getScreenSize(); // GET MY SCREEN SIZE
+                    int screenWidth = screenSize.width; // GET PIXELS FOR WIDTH
+                    int screenHeight = screenSize.height; // GET PIXELS FOR HEIGHT
 
-        int screenWidth = screenSize.width; // GET PIXELS FOR WIDTH
-        int screenHeight = screenSize.height; // GET PIXELS FOR HEIGHT
+                    final int FRAME_WIDTH = 800; // SET WIDTH
+                    final int FRAME_HEIGHT = 500; // SET WEIGHT
 
-        final int FRAME_WIDTH = 800; // SET WIDTH
-        final int FRAME_HEIGHT = 500; // SET WEIGHT
+                    int start_x = screenWidth / 2 - (FRAME_WIDTH / 2); // SET START LOCATION FOR X
+                    int start_y = screenHeight / 2 - (FRAME_HEIGHT / 2); // SET START LOCATION FOR Y
 
-        int start_x = screenWidth / 2 - (FRAME_WIDTH / 2); // SET START LOCATION FOR X
-        int start_y = screenHeight / 2 - (FRAME_HEIGHT / 2); // SET START LOCATION FOR Y
+                    JFrame displayKTP = new JFrame("KTP"); // CREATE FRAME AND SET TITLE
 
-        JFrame displayKTP = new JFrame("Form Input Data Penduduk"); // CREATE FRAME AND SET TITLE
+                    displayKTP.setBounds(start_x, start_y, FRAME_WIDTH, FRAME_HEIGHT); // SET FRAME BOUND
 
-        displayKTP.setBounds(start_x, start_y, FRAME_WIDTH, FRAME_HEIGHT); // SET FRAME BOUND
+                    displayKTP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    displayKTP.setLayout(null);
 
-        displayKTP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        displayKTP.setLayout(null);
+                    JLabel labelNIK = new JLabel("NIK : " + nik);
+                    labelNIK.setBounds(200, 20, 150, 20);
+                    displayKTP.add(labelNIK);
 
-        JLabel labelNIK = new JLabel("NIK : "+nik);
-        labelNIK.setBounds(200, 20, 150, 20);
-        displayKTP.add(labelNIK);
+                    JLabel labelTempatLahir = new JLabel("Tempat Lahir : " + tempatLahir);
+                    labelTempatLahir.setBounds(200, 40, 150, 20);
+                    displayKTP.add(labelTempatLahir);
 
-        JLabel labelTempatLahir = new JLabel("Tempat Lahir : " +tempatLahir);
-        labelTempatLahir.setBounds(200, 40, 150, 20);
-        displayKTP.add(labelTempatLahir);
+                    JLabel labelTanggal1 = new JLabel("Tanggal : " + tanggal1);
+                    labelTanggal1.setBounds(200, 60, 200, 20);
+                    displayKTP.add(labelTanggal1);
 
-        JLabel labelTanggal1 = new JLabel("Tanggal : " +tanggal1);
-        labelTanggal1.setBounds(200, 60, 200, 20);
-        displayKTP.add(labelTanggal1);
-        
-        JLabel labelJenisKelamin = new JLabel("Jenis Kelamin : " +jenisKelamin);
-        labelJenisKelamin.setBounds(200, 80, 150, 20);
-        displayKTP.add(labelJenisKelamin);
-        
-        JLabel labelGoldat = new JLabel("Goldar : " +golDarah);
-        labelGoldat.setBounds(200, 100, 150, 20);
-        displayKTP.add(labelGoldat);
-        
-        JLabel labelAlamat = new JLabel("Alamat : " +alamat);
-        labelAlamat.setBounds(200, 120, 150, 20);
-        displayKTP.add(labelAlamat);
-        
-        JLabel labelRTRW = new JLabel("RT / RW: " + rt +" "+ rw);
-        labelRTRW.setBounds(200, 140, 150, 20);
-        displayKTP.add(labelRTRW);
+                    JLabel labelJenisKelamin = new JLabel("Jenis Kelamin : " + jenisKelamin);
+                    labelJenisKelamin.setBounds(200, 80, 150, 20);
+                    displayKTP.add(labelJenisKelamin);
 
-        JLabel labelKelDesa = new JLabel("Kel / Desa : "+kelDesa);
-        labelKelDesa.setBounds(200, 160, 150, 20);
-        displayKTP.add(labelKelDesa);
+                    JLabel labelGoldat = new JLabel("Goldar : " + golDarah);
+                    labelGoldat.setBounds(200, 100, 150, 20);
+                    displayKTP.add(labelGoldat);
 
-        JLabel labelKecamatan = new JLabel("Kecamatan : "+kecamatan);
-        labelKecamatan.setBounds(200, 180, 150, 20);
-        displayKTP.add(labelKecamatan);
+                    JLabel labelAlamat = new JLabel("Alamat : " + alamat);
+                    labelAlamat.setBounds(200, 120, 150, 20);
+                    displayKTP.add(labelAlamat);
 
-        JLabel labelAgama = new JLabel("Agama : "+agama);
-        labelAgama.setBounds(200, 200, 150, 20);
-        displayKTP.add(labelAgama);
+                    JLabel labelRTRW = new JLabel("RT / RW: " + rt + " " + rw);
+                    labelRTRW.setBounds(200, 140, 150, 20);
+                    displayKTP.add(labelRTRW);
 
-        JLabel labelStatusKawin = new JLabel("Status Kawin : "+statusPerkawinan);
-        labelStatusKawin.setBounds(200, 220, 150, 20);
-        displayKTP.add(labelStatusKawin);
+                    JLabel labelKelDesa = new JLabel("Kel / Desa : " + kelDesa);
+                    labelKelDesa.setBounds(200, 160, 150, 20);
+                    displayKTP.add(labelKelDesa);
 
-        JLabel labelPekerjaan = new JLabel("Pekerjaan : "+pekerjaan);
-        labelPekerjaan.setBounds(200, 240, 250, 20);
-        displayKTP.add(labelPekerjaan);
+                    JLabel labelKecamatan = new JLabel("Kecamatan : " + kecamatan);
+                    labelKecamatan.setBounds(200, 180, 150, 20);
+                    displayKTP.add(labelKecamatan);
 
-        JLabel labelWargaNegaraAsal = new JLabel("Asal Negara : "+wargaNegaraAsal);
-        labelWargaNegaraAsal.setBounds(200, 260, 150, 20);
-        displayKTP.add(labelWargaNegaraAsal);
+                    JLabel labelAgama = new JLabel("Agama : " + agama);
+                    labelAgama.setBounds(200, 200, 150, 20);
+                    displayKTP.add(labelAgama);
 
-        JLabel labelKewarganegaraan = new JLabel("Kewarganegaraan : "+kewarganegaraan);
-        labelKewarganegaraan.setBounds(200, 280, 150, 20);
-        displayKTP.add(labelKewarganegaraan);
+                    JLabel labelStatusKawin = new JLabel("Status Kawin : " + statusPerkawinan);
+                    labelStatusKawin.setBounds(200, 220, 150, 20);
+                    displayKTP.add(labelStatusKawin);
 
-        JLabel labelBerlakuHingga = new JLabel("Berlaku Hingga : "+berlakuHingga);
-        labelBerlakuHingga.setBounds(200, 300, 150, 20);
-        displayKTP.add(labelBerlakuHingga);
+                    JLabel labelPekerjaan = new JLabel("Pekerjaan : " + pekerjaan);
+                    labelPekerjaan.setBounds(200, 240, 250, 20);
+                    displayKTP.add(labelPekerjaan);
 
-        JLabel labelKotaPembuatan = new JLabel("Kota Pembuatan : "+kotaPembuatan);
-        labelKotaPembuatan.setBounds(200, 320, 150, 20);
-        displayKTP.add(labelKotaPembuatan);
+                    JLabel labelWargaNegaraAsal = new JLabel("Asal Negara : " + wargaNegaraAsal);
+                    labelWargaNegaraAsal.setBounds(200, 260, 150, 20);
+                    displayKTP.add(labelWargaNegaraAsal);
 
-        JLabel labelTanggalPembuatan = new JLabel("Tanggal Pembuatan : "+tanggal2);
-        labelTanggalPembuatan.setBounds(200, 340, 150, 20);
-        displayKTP.add(labelTanggalPembuatan);
+                    JLabel labelKewarganegaraan = new JLabel("Kewarganegaraan : " + kewarganegaraan);
+                    labelKewarganegaraan.setBounds(200, 280, 150, 20);
+                    displayKTP.add(labelKewarganegaraan);
+
+                    JLabel labelBerlakuHingga = new JLabel("Berlaku Hingga : " + berlakuHingga);
+                    labelBerlakuHingga.setBounds(200, 300, 150, 20);
+                    displayKTP.add(labelBerlakuHingga);
+
+                    JLabel labelKotaPembuatan = new JLabel("Kota Pembuatan : " + kotaPembuatan);
+                    labelKotaPembuatan.setBounds(200, 320, 150, 20);
+                    displayKTP.add(labelKotaPembuatan);
+
+                    JLabel labelTanggalPembuatan = new JLabel("Tanggal Pembuatan : " + tanggal2);
+                    labelTanggalPembuatan.setBounds(200, 340, 250, 20);
+                    displayKTP.add(labelTanggalPembuatan);
 
 
+                        //foto muka
+                    JLabel labelPhoto = new JLabel();
+                    labelPhoto.setBounds(500, 100, 200, 200);
+                    displayKTP.add(labelPhoto);
+
+                    ImageIcon imageIcon = new ImageIcon(photoFile.getAbsolutePath());
+
+                    Image image = imageIcon.getImage().getScaledInstance(
+                            labelPhoto.getWidth(),
+                            labelPhoto.getHeight(),
+                            Image.SCALE_SMOOTH);
+                    labelPhoto.setIcon(new ImageIcon(image));
 
 
 
 
 
+                        //foto signature
 
+                    JLabel labelSignPhoto = new JLabel();
+                    labelSignPhoto.setBounds(570, 300, 50, 50);
+                    displayKTP.add(labelSignPhoto);
 
+                    ImageIcon imageIconSign = new ImageIcon(signatureFile.getAbsolutePath());
 
+                    Image imageSign = imageIconSign.getImage().getScaledInstance(
+                            labelSignPhoto.getWidth(),
+                            labelSignPhoto.getHeight(),
+                            Image.SCALE_SMOOTH);
+                    labelSignPhoto.setIcon(new ImageIcon(imageSign));
 
-
-        
-        
-
-        displayKTP.setVisible(true);
-              
+                    displayKTP.setVisible(true);
 
                 } else {
-                   
+
                     JOptionPane.showMessageDialog(form, "input ga lengkap", "Error",
                             JOptionPane.ERROR_MESSAGE);
 
