@@ -93,9 +93,6 @@ public class Controller {
         }
     }
 
-
-
-
     public static String getSelectedJobs(JCheckBox karyawanSwastaCheck, JCheckBox pnsCheck,
             JCheckBox wiraswastaCheck, JCheckBox akademisiCheck,
             JCheckBox pengangguranCheck) {
@@ -113,76 +110,62 @@ public class Controller {
         return "Tidak ada pekerjaan";
     }
 
-
-
     public static JenisAgama getJenisAgama(String agama) {
 
         if (agama.equalsIgnoreCase("KRISTEN")) {
-            
+
             return JenisAgama.KRISTEN;
 
-        }
-        else if (agama.equalsIgnoreCase("KATHOLIK")) {
-            
+        } else if (agama.equalsIgnoreCase("KATHOLIK")) {
+
             return JenisAgama.KATHOLIK;
 
-        } 
-        else if (agama.equalsIgnoreCase("ISLAM")) {
-            
+        } else if (agama.equalsIgnoreCase("ISLAM")) {
+
             return JenisAgama.ISLAM;
 
-        } 
-        else if (agama.equalsIgnoreCase("HINDU")) {
-            
+        } else if (agama.equalsIgnoreCase("HINDU")) {
+
             return JenisAgama.HINDU;
 
-        } 
-        else if (agama.equalsIgnoreCase("BUDDHA")) {
-            
+        } else if (agama.equalsIgnoreCase("BUDDHA")) {
+
             return JenisAgama.BUDDHA;
 
-        } 
-        else if (agama.equalsIgnoreCase("KONGHUCU")) {
-            
+        } else if (agama.equalsIgnoreCase("KONGHUCU")) {
+
             return JenisAgama.KONGHUCU;
 
-        }else{
+        } else {
             return JenisAgama.ATEIS;
         }
 
-}
-
-
+    }
 
     public static StatusPerkawinan getStatusPerkawinan(String status) {
 
         if (status.equalsIgnoreCase("BELUM MENIKAH")) {
-            
+
             return StatusPerkawinan.BELUM_MENIKAH;
 
-        }
-        else if (status.equalsIgnoreCase("MENIKAH")) {
-            
+        } else if (status.equalsIgnoreCase("MENIKAH")) {
+
             return StatusPerkawinan.MENIKAH;
 
-        } 
-        else {
+        } else {
             return StatusPerkawinan.UNKNOWN;
         }
     }
 
-
-    
     public static String getCitizenship(String citizen, String country) {
 
         String citizenship = "";
 
         if (citizen.equalsIgnoreCase("WNI")) {
-            
+
             citizenship = "WNI";
 
-        }
-        else {
+        } else {
 
             citizenship = "WNA(" + country + ")";
 
@@ -192,91 +175,29 @@ public class Controller {
 
     }
 
+    public static KTP createKTP(String nik, String nama, String tempatLahir, String tanggalLahir,
+            JenisKelamin jenisKelamin, String golDarah, String alamat, String rt, String rw, String kelDesa,
+            String kecamatan,
+            JenisAgama agama, StatusPerkawinan statusPerkawinan, String pekerjaan, String kewarganegaraan,
+            String wargaNegaraAsal, File photoFile, File signatureFile, String berlakuHingga, String kotaPembuatan,
+            String tanggalPembuatan, String actionValue) {
 
+        KTP ktp = new KTP(nik, nama, tempatLahir, tanggalLahir, jenisKelamin, golDarah, alamat, rt, rw, kelDesa,
+                kecamatan,
+                agama, statusPerkawinan, pekerjaan, kewarganegaraan, wargaNegaraAsal, photoFile,
+                signatureFile, berlakuHingga, kotaPembuatan, tanggalPembuatan);
 
+        if (actionValue.equalsIgnoreCase("Perekaman")) {
 
+            DBController.insertNewUser(ktp); // ADD TO DATABASE
 
+        } else {
 
+            System.out.println("aaaa");
 
+        }
 
-    
+        return ktp;
 
-
-
-    
-    // public static KTP createKTP(
-    //     String nik, 
-    //     String nama, 
-    //     String tempatLahir, 
-    //     String tanggalLahir, 
-    //     JenisKelamin jenisKelamin, 
-    //     String golDarah, 
-    //     String alamat, 
-    //     String rt, 
-    //     String rw, 
-    //     String kelDesa, 
-    //     String kecamatan,
-    //     JenisAgama agama, 
-    //     StatusPerkawinan statusPerkawinan, 
-    //     String pekerjaan, 
-    //     String kewarganegaraan, 
-    //     String wargaNegaraAsal, 
-    //     File photoFile, 
-    //     File signatureFile, 
-    //     String berlakuHingga, 
-    //     String kotaPembuatan, 
-    //     String tanggalPembuatan, 
-    //     int actionValue) {
-        
-
-
-    //     KTP ktp = new KTP(nik, nama, tempatLahir, tanggalLahir, jenisKelamin, golDarah, alamat, rt, rw, kelDesa, kecamatan,
-    //                             agama, statusPerkawinan, pekerjaan, kewarganegaraan, wargaNegaraAsal, photoFile,
-    //                             signatureFile, berlakuHingga, kotaPembuatan, tanggalPembuatan);
-        
-    //     if (actionValue == 1) {
-            
-    //     Toolkit toolkit = Toolkit.getDefaultToolkit(); // INIT TOOLKIT
-    //     Dimension screenSize = toolkit.getScreenSize(); // GET MY SCREEN SIZE
-
-    //     int screenWidth = screenSize.width; // GET PIXELS FOR WIDTH
-    //     int screenHeight = screenSize.height; // GET PIXELS FOR HEIGHT
-
-    //     final int FRAME_WIDTH = 1200; // SET WIDTH
-    //     final int FRAME_HEIGHT = 800; // SET WEIGHT
-
-    //     int start_x = screenWidth / 2 - (FRAME_WIDTH / 2); // SET START LOCATION FOR X
-    //     int start_y = screenHeight / 2 - (FRAME_HEIGHT / 2); // SET START LOCATION FOR Y
-
-    //     JFrame displayKTP = new JFrame("Form Input Data Penduduk"); // CREATE FRAME AND SET TITLE
-
-    //     displayKTP.setBounds(start_x, start_y, FRAME_WIDTH, FRAME_HEIGHT); // SET FRAME BOUND
-
-    //     displayKTP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    //     displayKTP.setLayout(null);
-
-        
-
-    //     displayKTP.setVisible(true);
-
-
-
-
-
-
-        
-
-    //     }
-    //     else {
-
-    //       System.out.println("Update");
-
-    //     }
-
-    //     return ktp;
-
-    // }
-
+    }
 }
-
-

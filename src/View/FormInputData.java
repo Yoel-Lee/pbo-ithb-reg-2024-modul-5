@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -386,6 +387,8 @@ public class FormInputData {
         submitButton.setBounds(20, 720, 200, 30);
         formPanel.add(submitButton);
 
+
+
         submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (Controller.checkInput(nikField, namaField, tempatLahirField, datePicker, genderGroup, bloodGroup,
@@ -395,10 +398,14 @@ public class FormInputData {
                         kotaPembuatanKTPField, datePickerKTP))
                 {
 
+
+
                     String nik = nikField.getText();
                     String nama = namaField.getText();
                     String tempatLahir = tempatLahirField.getText();
-                    java.util.Date tanggal1 = (java.util.Date) datePicker.getModel().getValue();
+                  java.util.Date tanggal1 = (java.util.Date) datePicker.getModel().getValue();
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+String tanggal1Str = sdf.format(tanggal1);
                     JenisKelamin jenisKelamin = priaButton.isSelected() ? JenisKelamin.PRIA : JenisKelamin.WANITA;
                     String golDarah = bloodGroup.getSelection().getActionCommand();
                     String alamat = alamatField.getText();
@@ -416,28 +423,60 @@ public class FormInputData {
                             .getCitizenship(groupKewarganegaraan.getSelection().getActionCommand(), wargaNegaraAsal);
                     String berlakuHingga = berlakuField.getText();
                     String kotaPembuatan = kotaPembuatanKTPField.getText();
-                    java.util.Date tanggal2 = (java.util.Date) datePickerKTP.getModel().getValue();
+                    java.util.Date tanggal2 = (java.util.Date) datePicker.getModel().getValue();
+SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+String tanggal2Str = sdf.format(tanggal2);
+
+
+
+
+
+
+
+
+
+
+
+
+                    // M A S U K I N    K E     D A T A B A S E
+
 
                     
-                    System.out.println("NIK: " + nik);
-                    System.out.println("Nama: " + nama);
-                    System.out.println("Tempat Lahir: " + tempatLahir);
-                    System.out.println("Tanggal Lahir: " + tanggal1);
-                    System.out.println("Jenis Kelamin: " + jenisKelamin);
-                    System.out.println("Golongan Darah: " + golDarah);
-                    System.out.println("Alamat: " + alamat);
-                    System.out.println("RT: " + rt);
-                    System.out.println("RW: " + rw);
-                    System.out.println("Kelurahan/Desa: " + kelDesa);
-                    System.out.println("Kecamatan: " + kecamatan);
-                    System.out.println("Agama: " + agama);
-                    System.out.println("Status Perkawinan: " + statusPerkawinan);
-                    System.out.println("Pekerjaan: " + pekerjaan);
-                    System.out.println("Warga Negara Asal: " + wargaNegaraAsal);
-                    System.out.println("Kewarganegaraan: " + kewarganegaraan);
-                    System.out.println("Berlaku Hingga: " + berlakuHingga);
-                    System.out.println("Kota Pembuatan: " + kotaPembuatan);
-                    System.out.println("Tanggal Pembuatan KTP: " + tanggal2);
+                    // Controller.createKTP(nik, nama, tempatLahir, tanggal1Str, jenisKelamin, golDarah, alamat, rt, rw, kelDesa, kecamatan, agama, statusPerkawinan, 
+                    // pekerjaan, kewarganegaraan, wargaNegaraAsal, photoFile, signatureFile, berlakuHingga, kotaPembuatan, tanggal2Str, action);
+                    
+
+
+
+
+                    
+
+
+
+
+
+
+
+                    
+                    // System.out.println("NIK: " + nik);
+                    // System.out.println("Nama: " + nama);
+                    // System.out.println("Tempat Lahir: " + tempatLahir);
+                    // System.out.println("Tanggal Lahir: " + tanggal1);
+                    // System.out.println("Jenis Kelamin: " + jenisKelamin);
+                    // System.out.println("Golongan Darah: " + golDarah);
+                    // System.out.println("Alamat: " + alamat);
+                    // System.out.println("RT: " + rt);
+                    // System.out.println("RW: " + rw);
+                    // System.out.println("Kelurahan/Desa: " + kelDesa);
+                    // System.out.println("Kecamatan: " + kecamatan);
+                    // System.out.println("Agama: " + agama);
+                    // System.out.println("Status Perkawinan: " + statusPerkawinan);
+                    // System.out.println("Pekerjaan: " + pekerjaan);
+                    // System.out.println("Warga Negara Asal: " + wargaNegaraAsal);
+                    // System.out.println("Kewarganegaraan: " + kewarganegaraan);
+                    // System.out.println("Berlaku Hingga: " + berlakuHingga);
+                    // System.out.println("Kota Pembuatan: " + kotaPembuatan);
+                    // System.out.println("Tanggal Pembuatan KTP: " + tanggal2);
 
                     Toolkit toolkit = Toolkit.getDefaultToolkit(); // INIT TOOLKIT
                     Dimension screenSize = toolkit.getScreenSize(); // GET MY SCREEN SIZE
@@ -523,7 +562,7 @@ public class FormInputData {
                     displayKTP.add(labelKotaPembuatan);
 
                     JLabel labelTanggalPembuatan = new JLabel("Tanggal Pembuatan : " + tanggal2);
-                    labelTanggalPembuatan.setBounds(200, 340, 250, 20);
+                    labelTanggalPembuatan.setBounds(200, 340, 350, 20);
                     displayKTP.add(labelTanggalPembuatan);
 
 
@@ -557,6 +596,25 @@ public class FormInputData {
                             labelSignPhoto.getHeight(),
                             Image.SCALE_SMOOTH);
                     labelSignPhoto.setIcon(new ImageIcon(imageSign));
+
+
+
+                    //BACK TO MAIN MENU
+
+                    JButton backtoMainMenuButton = new JButton("Back To Main Menu");
+                    backtoMainMenuButton.setBounds(570, 400, 100, 30);
+                    displayKTP.add(backtoMainMenuButton);
+
+                    backtoMainMenuButton.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            new MainMenu();
+                        }
+                    });
+
+
+
+
+
 
                     displayKTP.setVisible(true);
 
