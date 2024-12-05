@@ -1,9 +1,15 @@
 package Controller;
 
+import java.io.File;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import Model.Class.KTP;
+import Model.Enum.JenisAgama;
+import Model.Enum.JenisKelamin;
+import Model.Enum.StatusPerkawinan;
 
 public class DBController {
     static DataBaseHandler conn = new DataBaseHandler();
@@ -57,5 +63,78 @@ public class DBController {
 
         }
 
+
+
+        
     }
+
+
+
+
+
+
+
+
+    
+    // SEARCH/GET KTP
+    public static KTP getKTP(String nik) {
+
+        KTP ktp = new KTP(nik, nik, nik, nik, null, nik, nik, nik, nik, nik, nik, null, null, nik, nik, nik, null, null, nik, nik, nik);
+
+        try {
+
+            conn.connect();
+            String query = "SELECT * FROM ktp WHERE NIK='" + nik + "'";
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            if (rs.next()) {
+                
+                do {
+                    
+                    ktp.setNik(rs.getString("NIK"));
+                    ktp.setNama(rs.getString("nama"));
+                    ktp.setTempatLahir(rs.getString("tempat_lahir"));
+                    ktp.setTanggalLahir(rs.getString("tanggal_lahir"));
+                    ktp.setJenisKelamin(JenisKelamin.valueOf(rs.getString("jenis_kelamin")));
+                    ktp.setGolDarah(rs.getString("gol_darah"));
+                    ktp.setAlamat(rs.getString("alamat"));
+                    ktp.setRt(rs.getString("rt"));
+                    ktp.setRw(rs.getString("rw"));
+                    ktp.setKelDesa(rs.getString("keldesa"));
+                    ktp.setKecamatan(rs.getString("kecamatan"));
+                    ktp.setAgama(JenisAgama.valueOf(rs.getString("agama")));
+                    ktp.setStatusPerkawinan(StatusPerkawinan.valueOf(rs.getString("status_perkawinan")));
+                    ktp.setPekerjaan(rs.getString("pekerjaan"));
+                    ktp.setKewarganegaraan(rs.getString("kewarganegaraan"));
+                    ktp.setWargaNegaraAsal(rs.getString("negara_asal"));
+                    ktp.setFotoFilePath(new File(rs.getString("photo_path")));
+                    ktp.setTandaTanganFilePath(new File(rs.getString("signature_path")));
+                    ktp.setBerlakuHingga(rs.getString("berlaku_hingga"));
+                    ktp.setKotaPembuatan(rs.getString("kota_pembuatan"));
+                    ktp.setTanggalPembuatan(rs.getString("tanggal_pembuatan"));
+
+                } while (rs.next());
+
+            }
+            else {
+
+                return null;
+
+            }
+
+        } 
+        catch (SQLException e) {
+
+            e.printStackTrace();
+
+        } 
+
+        conn.disconnect();
+        return ktp;
+
+    }
+
+
+    
 }

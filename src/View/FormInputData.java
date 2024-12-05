@@ -2,6 +2,7 @@ package View;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -31,6 +32,7 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
+import Controller.DBController;
 import Controller.Controller;
 import Model.Class.KTP;
 import Model.Enum.JenisAgama;
@@ -442,8 +444,8 @@ String tanggal2Str = sdf.format(tanggal2);
 
 
                     
-                    // Controller.createKTP(nik, nama, tempatLahir, tanggal1Str, jenisKelamin, golDarah, alamat, rt, rw, kelDesa, kecamatan, agama, statusPerkawinan, 
-                    // pekerjaan, kewarganegaraan, wargaNegaraAsal, photoFile, signatureFile, berlakuHingga, kotaPembuatan, tanggal2Str, action);
+                    Controller.createKTP(nik, nama, tempatLahir, tanggal1Str, jenisKelamin, golDarah, alamat, rt, rw, kelDesa, kecamatan, agama, statusPerkawinan, 
+                    pekerjaan, kewarganegaraan, wargaNegaraAsal, photoFile, signatureFile, berlakuHingga, kotaPembuatan, tanggal2Str, action);
                     
 
 
@@ -628,9 +630,11 @@ String tanggal2Str = sdf.format(tanggal2);
 
         });
 
+
+        
         form.add(formPanel);
         form.setVisible(true);
 
     }
-
+    
 }

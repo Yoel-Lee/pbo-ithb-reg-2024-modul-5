@@ -45,6 +45,26 @@ public class MainMenu {
 
 
 
+        JButton pencarianBtn = new JButton("PENCARIAN");
+        pencarianBtn.setBounds(110, 150, 150, 30);
+        mainMenu.add(pencarianBtn);
+
+        pencarianBtn.addActionListener(e -> {
+            mainMenu.dispose();
+            new FormPencarianData();
+        });
+
+
+        JButton exitBtn = new JButton("EXIT");
+        exitBtn.setBounds(110, 190, 150, 30);
+        mainMenu.add(exitBtn);
+
+        exitBtn.addActionListener(e -> {
+            mainMenu.dispose();
+        });
+
+
+
 
 
         mainMenu.setVisible(true);
