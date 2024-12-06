@@ -1,4 +1,4 @@
-
+package Main;
 
 import View.MainMenu;
 
@@ -9,4 +9,5 @@ public class Main {
         new MainMenu();
 
     }
+
 }

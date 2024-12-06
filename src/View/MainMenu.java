@@ -1,72 +1,75 @@
 package View;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainMenu {
-    public MainMenu(){
-        showMenu();
-    }
     
-    public void showMenu(){
-        
+    private JFrame frame;
+
+    public MainMenu() {
+
+        showMainMenu();
+
+    }
+
+    public void showMainMenu() {
+
         Toolkit toolkit = Toolkit.getDefaultToolkit(); // INIT TOOLKIT
         Dimension screenSize = toolkit.getScreenSize(); // GET MY SCREEN SIZE
 
+        int screenWidth = screenSize.width; // GET PIXELS FOR WIDTH
+        int screenHeight = screenSize.height; // GET PIXELS FOR HEIGHT
 
-        JFrame mainMenu= new JFrame("Main Menu");
-        mainMenu.setLayout(null);
-        mainMenu.setSize(400, 300);
-        mainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        final int FRAME_WIDTH = 400; // SET WIDTH
+        final int FRAME_HEIGHT = 500; // SET WEIGHT
 
-        int x = (screenSize.width - mainMenu.getWidth()) / 2;  // Hitung posisi x
-        int y = (screenSize.height - mainMenu.getHeight()) / 2; // Hitung posisi y
-        mainMenu.setLocation(x, y);
-
-
-
-        JLabel label = new JLabel("Selamat Datang di Menu Utama");
-        label.setBounds(100, 20, 200, 30);
-        mainMenu.add(label);
-
+        int start_x = screenWidth / 2 - (FRAME_WIDTH / 2); // SET START LOCATION FOR X
+        int start_y = screenHeight / 2 - (FRAME_HEIGHT / 2); // SET START LOCATION FOR Y
         
-        JLabel title2 = new JLabel("E-KTP");
-        title2.setBounds(150, 50, 100, 50);
-        title2.setFont(new Font("SansSerif", Font.BOLD, 24));
-        mainMenu.add(title2);
+        frame = new JFrame("Main Menu");
+        frame.setBounds(start_x, start_y, FRAME_WIDTH, FRAME_HEIGHT); // SET FRAME BOUND
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JButton perekamanBtn = new JButton("PEREKAMAN");
-        perekamanBtn.setBounds(110, 110, 150, 30);
-        mainMenu.add(perekamanBtn);
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
+
+
+        JLabel title2 = new JLabel("E-KTP");
+        title2.setBounds(155, 50, 120, 50);
+        title2.setFont(new Font("SansSerif", Font.BOLD, 24));
+        panel.add(title2);
+
+        JButton perekamanBtn = new JButton("INSERT");
+        perekamanBtn.setBounds(120, 130, 140, 50);
+        panel.add(perekamanBtn);
 
         perekamanBtn.addActionListener(e -> {
-            mainMenu.dispose();
-            new FormInputData("Perekaman",null);
+            frame.dispose();
+            new FormInputData(1, null);
         });
 
-
-
-        JButton pencarianBtn = new JButton("PENCARIAN");
-        pencarianBtn.setBounds(110, 150, 150, 30);
-        mainMenu.add(pencarianBtn);
+        JButton pencarianBtn = new JButton("SEARCH KTP");
+        pencarianBtn.setBounds(120, 200, 140, 50);
+        panel.add(pencarianBtn);
 
         pencarianBtn.addActionListener(e -> {
-            mainMenu.dispose();
+            frame.dispose();
             new FormPencarianData();
         });
 
-
         JButton exitBtn = new JButton("EXIT");
-        exitBtn.setBounds(110, 190, 150, 30);
-        mainMenu.add(exitBtn);
+        exitBtn.setBounds(120, 270, 140, 50);
+        panel.add(exitBtn);
 
         exitBtn.addActionListener(e -> {
-            mainMenu.dispose();
+            frame.dispose();
         });
 
+        frame.add(panel);
+        frame.setVisible(true);
 
-
-
-
-        mainMenu.setVisible(true);
     }
+
 }
