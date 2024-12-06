@@ -67,7 +67,7 @@ public class FormPencarianData {
 
                 
                 if (DBController.getKTP(keyField.getText()) != null) {
-                    
+                    //udah masuk kesini
                     frame.dispose();
                     new FormInputData("Pencarian", DBController.getKTP(keyField.getText()));
 

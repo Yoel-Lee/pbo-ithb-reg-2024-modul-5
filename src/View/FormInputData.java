@@ -568,6 +568,7 @@ String tanggal2Str = sdf.format(tanggal2);
                     displayKTP.add(labelTanggalPembuatan);
 
 
+
                         //foto muka
                     JLabel labelPhoto = new JLabel();
                     labelPhoto.setBounds(500, 100, 200, 200);
@@ -631,10 +632,184 @@ String tanggal2Str = sdf.format(tanggal2);
         });
 
 
+
+
+        //UPDATE 
         
+        JButton updateButton = new JButton("UPDATE");
+        updateButton.setBounds(240, 720, 200, 30);
+        formPanel.add(updateButton);
+
+        updateButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String nik = nikField.getText();
+                String nama = namaField.getText();
+                String tempatLahir = tempatLahirField.getText();
+              java.util.Date tanggal1 = (java.util.Date) datePicker.getModel().getValue();
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+String tanggal1Str = sdf.format(tanggal1);
+                JenisKelamin jenisKelamin = priaButton.isSelected() ? JenisKelamin.PRIA : JenisKelamin.WANITA;
+                String golDarah = bloodGroup.getSelection().getActionCommand();
+                String alamat = alamatField.getText();
+                String rt = RTField.getText();
+                String rw = RWField.getText();
+                String kelDesa = kelDesaField.getText();
+                String kecamatan = kecamatanField.getText();
+                JenisAgama agama = Controller.getJenisAgama(String.valueOf(agamaCB.getSelectedItem()));
+                StatusPerkawinan statusPerkawinan = Controller
+                        .getStatusPerkawinan(String.valueOf(statusNikahCB.getSelectedItem()));
+                String pekerjaan = Controller.getSelectedJobs(karyawanSwastaCheck, pnsCheck, wiraswastaCheck,
+                        akademisiCheck, pengangguranCheck);
+                String wargaNegaraAsal = wnaRadio.isSelected() ? countryLabelField.getText() : null;
+                String kewarganegaraan = Controller
+                        .getCitizenship(groupKewarganegaraan.getSelection().getActionCommand(), wargaNegaraAsal);
+                String berlakuHingga = berlakuField.getText();
+                String kotaPembuatan = kotaPembuatanKTPField.getText();
+                java.util.Date tanggal2 = (java.util.Date) datePicker.getModel().getValue();
+SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+String tanggal2Str = sdf.format(tanggal2);
+
+                        //foto muka
+                        JLabel labelPhoto = new JLabel();
+                        labelPhoto.setBounds(500, 100, 200, 200);
+
+    
+                        ImageIcon imageIcon = new ImageIcon(photoFile.getAbsolutePath());
+    
+                        Image image = imageIcon.getImage().getScaledInstance(
+                                labelPhoto.getWidth(),
+                                labelPhoto.getHeight(),
+                                Image.SCALE_SMOOTH);
+                        labelPhoto.setIcon(new ImageIcon(image));
+    
+    
+    
+    
+    
+                            //foto signature
+    
+                        JLabel labelSignPhoto = new JLabel();
+                        labelSignPhoto.setBounds(570, 300, 50, 50);
+
+    
+                        ImageIcon imageIconSign = new ImageIcon(signatureFile.getAbsolutePath());
+    
+                        Image imageSign = imageIconSign.getImage().getScaledInstance(
+                                labelSignPhoto.getWidth(),
+                                labelSignPhoto.getHeight(),
+                                Image.SCALE_SMOOTH);
+                        labelSignPhoto.setIcon(new ImageIcon(imageSign));
+    
+    
+
+
+
+DBController.updateData(nik, nama, tempatLahir, tanggal1Str, jenisKelamin, golDarah, alamat, rt, rw, kelDesa, kecamatan, agama, statusPerkawinan, 
+pekerjaan, kewarganegaraan, wargaNegaraAsal, photoFile, signatureFile, berlakuHingga, kotaPembuatan, tanggal2Str, action);
+
+
+
+
+                form.dispose();
+
+                JOptionPane.showMessageDialog(form, "Berhasil edit data!", "Notifikasi", JOptionPane.INFORMATION_MESSAGE);
+
+                
+
+            }
+
+        });
+
+
+
+
+        JButton deleteButton = new JButton("DELETE");
+        deleteButton.setBounds(720, 660, 200, 30);
+        formPanel.add(deleteButton);
+
+        deleteButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                String nik = nikField.getText();
+                
+                int option = JOptionPane.showConfirmDialog(form, "Apakah Anda yakin ingin menghapus data ?",
+                        "Konfirmasi Penghapusan", JOptionPane.YES_NO_OPTION);
+                
+                if (option == JOptionPane.YES_OPTION) {
+                    
+                    form.dispose();
+                    boolean deleteSuccess = DBController.deleteData(nik);
+
+                    if (deleteSuccess) {
+
+                        JOptionPane.showMessageDialog(form, "Data dengan NIK " + nik + " berhasil dihapus.");
+
+                    } 
+                    else {
+
+                        JOptionPane.showMessageDialog(form, "Gagal menghapus data dengan NIK " + nik + ".");
+
+                    }
+
+                    new MainMenu();
+
+                }
+
+            }
+
+        });
+
+        
+        if (action.equals("Perekaman")) {
+            
+            submitButton.setVisible(true);
+            updateButton.setVisible(false);
+            deleteButton.setVisible(false);
+
+        }
+        else {
+
+            submitButton.setVisible(false);
+            updateButton.setVisible(true);
+            deleteButton.setVisible(true);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         form.add(formPanel);
         form.setVisible(true);
+        
+
+
+
+
+
+
+
 
     }
+
+
+    
+    
     
 }
